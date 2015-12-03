@@ -15,6 +15,7 @@
 
   <i18n-msg msgid="days" id="days">PLACEHOLDER_STRING</i18n-msg>
   <i18n-msg msgid="UNKNOWN_MSG_ID" id="days2">PLACEHOLDER_STRING</i18n-msg>
+  <i18n-msg msgid="days" id="days3" no-html></i18n-msg>
 
   <script>
 
@@ -78,6 +79,17 @@
         var el2 = document.createElement('i18n-msg');
         el2.msgid = 'minutes';
         assert.equal(el2.textContent, 'minutos');
+      });
+
+      var el3 = document.querySelector('#days3');
+      var expected = 'días';
+
+      test('.textContent was not updated to localize message', function() {
+        assert.equal(el3.textContent, '');
+      });
+
+      test('msg property is correctly setted', function() {
+        assert.equal(el3.msg, expected);
       });
 
     });

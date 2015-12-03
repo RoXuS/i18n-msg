@@ -131,6 +131,15 @@ If an appropriate message file can't be found, the `textContent` of the element 
         type: String,
         value: null,
         notify: true
+      },
+
+      /**
+       * The display mode.
+       * If true, the message isn't appended in the content of the component.
+       */
+      noHtml: {
+        type: Boolean,
+        value: false
       }
     },
 
@@ -176,7 +185,9 @@ If an appropriate message file can't be found, the `textContent` of the element 
       var msg = this.getMsg(this.msgid)
       if (msg) {
         this.msg = msg;
-        this.innerHTML = msg;
+        if (!this.noHtml) {
+          this.innerHTML = msg;
+        }
       }
     },
 
@@ -264,7 +275,9 @@ If an appropriate message file can't be found, the `textContent` of the element 
       var msg = instance.locales[instance.language][instance.msgid];
       if (msg && msg.message) {
         instance.msg = msg.message;
-        instance.innerHTML = msg.message;
+        if (!instance.noHtml) {
+          instance.innerHTML = msg.message;
+        }
       }
     },
 
